@@ -3,6 +3,7 @@
   height: 160px;
   background: #1E2343;
   border-radius: 10px;
+  border: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
