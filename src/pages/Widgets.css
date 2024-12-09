@@ -1,0 +1,141 @@
+/* Widgets.css */
+.home-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  background-color: #1e1e1e; /* Matches the dark background */
+  padding: 10px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.left-column {
+  display: flex;
+  flex-wrap: wrap; /* Allows flexibility for side-by-side placement */
+  gap: 20px;
+  width: 65%;
+  flex: 1 1 45%;
+  max-width: 902px;
+  display: flex
+;
+  flex-direction: column;
+  gap: 5px;
+  overflow: hidden;
+
+}
+
+  
+.user-notes-wrapper {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+/* UserInfo and Notes are side-by-side */
+.user-info {
+  flex: 1;
+  background-color: #5c6bc0;
+  border-radius: 10px;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.user-info img {
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.notes {
+  flex: 1;
+  background-color: #ffd54f;
+  border-radius: 10px;
+  padding: 20px;
+  color: #000;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* WeatherCard and Timer are stacked below */
+.weather-card,
+.timer {
+  width: 100%;
+  background-color: #3c3c3c;
+  border-radius: 10px;
+  padding: 20px;
+  color: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.timer button {
+  background-color: #e91e63;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.timer button:hover {
+  background-color: #d81b60;
+}
+
+/* News section styling */
+.right-column {
+  width: 30%;
+}
+
+.news {
+  background-color: #2a2a2a;
+  border-radius: 10px;
+  /* padding: 20px; */
+  color: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+ 
+  /* height: 100%; Ensure it fills the right column */
+  overflow: hidden;
+}
+.right-column {
+  flex: 1 1 45%;
+  max-width: 350px;
+  overflow: hidden;
+}
+/* General adjustments for responsiveness */
+@media (max-width: 768px) {
+  .home-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%;
+  }
+
+  .user-notes-wrapper {
+    flex-direction: column;
+  }
+
+  .news,
+  .notes,
+  .weather-card,
+  .timer,
+  .user-info {
+    margin-bottom: 20px;
+  }
+}

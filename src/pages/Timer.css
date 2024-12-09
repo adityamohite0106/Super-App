@@ -1,0 +1,92 @@
+.timer-card {
+  width: 600px;
+  height: 160px;
+  background: #1E2343;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+.time-circle {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  background: #191E39;
+  box-shadow: -3px -7px 16px rgba(95, 88, 88, 0.23), inset 0px 6px 26px rgba(0, 0, 0, 0.61);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.set-time {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 10px;
+}
+
+.time-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.up-icon,
+.down-icon {
+  width: 12px;
+  height: 8px;
+  cursor: pointer;
+}
+
+.feed-time {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 105.69%;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+}
+
+.wrapper-time {
+  display: flex;
+
+}
+
+.colon {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.5rem;
+  line-height: 105.69%;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+}
+
+.hours,
+.minutes,
+.seconds {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 105.69%;
+  letter-spacing: 0.04em;
+  color: #949494;
+}
+.start{
+  background-color: rgb(220, 103, 122);
+  width: 100px;
+  color: white;
+  font-size: larger;
+  padding: 5px;
+  text-align: center;
+  margin-left: 4px;
+  width: 100px;
+  border-radius: 10px;
+}
