@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Signup.css";
 import { useNavigate } from "react-router-dom";
+
 function Signup() {
   const [formData, setFormData] = useState({
     name: "",
@@ -9,6 +10,7 @@ function Signup() {
     mobile: "",
     tandcond: false,
   });
+
   const [error, setError] = useState({
     name: false,
     email: false,
@@ -16,55 +18,65 @@ function Signup() {
     username: false,
     tandcond: false,
   });
+
   const navigate = useNavigate();
+
   function submitHandler(event) {
     event.preventDefault();
-    const { name, email, mobile, username, termsAndConditions } = formData;
+
+    // Destructure form data
+    const { name, email, mobile, username, tandcond } = formData;
+
+    // Reset errors before validation
+    let hasError = false; // Track if there are validation errors
     setError({
       name: false,
       email: false,
       mobile: false,
       username: false,
-      termsAndConditions: false,
-    }); // reset error state
+      tandcond: false,
+    });
+
+    // Validate fields
     if (name.trim().length === 0) {
-      //
-      setError((prevState) => {
-        return { ...prevState, name: true };
-      });
-    }
-    if (email.trim().length === 0) {
-      setError((prevState) => {
-        return { ...prevState, email: true };
-      });
-    }
-    if (mobile.trim().length === 0) {
-      setError((prevState) => {
-        return { ...prevState, mobile: true };
-      });
+      setError((prevState) => ({ ...prevState, name: true }));
+      hasError = true;
     }
     if (username.trim().length === 0) {
-      setError((prevState) => {
-        return { ...prevState, username: true };
-      });
+      setError((prevState) => ({ ...prevState, username: true }));
+      hasError = true;
     }
-    if (termsAndConditions === false) {
-      setError((prevState) => {
-        return { ...prevState, termsAndConditions: true };
-      });
+    if (email.trim().length === 0) {
+      setError((prevState) => ({ ...prevState, email: true }));
+      hasError = true;
     }
+    if (mobile.trim().length === 0) {
+      setError((prevState) => ({ ...prevState, mobile: true }));
+      hasError = true;
+    }
+    if (!tandcond) {
+      setError((prevState) => ({ ...prevState, tandcond: true }));
+      hasError = true;
+    }
+
+    // Stop form submission if there are errors
+    if (hasError) {
+      return;
+    }
+
+    // If no errors, proceed to save data and navigate
     localStorage.setItem("user", JSON.stringify(formData));
     navigate("/movies");
   }
+
   function changHandler(event) {
     const { name, type, value, checked } = event.target;
-    setFormData((predata) => {
-      return {
-        ...predata,
-        [name]: type === "checkbox" ? checked : value,
-      };
-    });
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   }
+
   return (
     <div className="container">
       <div className="heading_signup">
@@ -81,14 +93,7 @@ function Signup() {
             onChange={changHandler}
           />
           {error.name && (
-            <p
-              style={{
-                color: "red",
-                fontSize: "12px",
-              }}
-            >
-              Name is required
-            </p>
+            <p style={{ color: "red", fontSize: "12px" }}>Name is required</p>
           )}
           <input
             type="text"
@@ -98,12 +103,7 @@ function Signup() {
             onChange={changHandler}
           />
           {error.username && (
-            <p
-              style={{
-                color: "red",
-                fontSize: "12px",
-              }}
-            >
+            <p style={{ color: "red", fontSize: "12px" }}>
               Username is required
             </p>
           )}
@@ -115,14 +115,7 @@ function Signup() {
             onChange={changHandler}
           />
           {error.email && (
-            <p
-              style={{
-                color: "red",
-                fontSize: "12px",
-              }}
-            >
-              Email is required
-            </p>
+            <p style={{ color: "red", fontSize: "12px" }}>Email is required</p>
           )}
           <input
             type="text"
@@ -132,34 +125,34 @@ function Signup() {
             onChange={changHandler}
           />
           {error.mobile && (
-            <p
-              style={{
-                color: "red",
-                fontSize: "12px",
-              }}
-            >
-              Mobile is required
-            </p>
+            <p style={{ color: "red", fontSize: "12px" }}>Mobile is required</p>
           )}
           <input
             type="checkbox"
             className="check"
             name="tandcond"
-            value={formData.tandcond}
+            checked={formData.tandcond}
+            onChange={changHandler}
           />
           <span className="check_box">
             Share my registration data with Superapp
           </span>
+          {error.tandcond && (
+            <p style={{ color: "red", fontSize: "12px" }}>
+              You must accept the terms and conditions
+            </p>
+          )}
           <button type="submit" className="submit">
             SIGN UP
           </button>
           <p>
-            By clicking on Sign up. you agree to Superapp
-            <span className="condition"  > Terms and Conditions of Use</span>
+            By clicking on Sign up, you agree to Superapp
+            <span className="condition"> Terms and Conditions of Use</span>
           </p>
           <p>
-            To learn more about how Superapp collects, uses, shares and protects
-            your personal data please head Superapp <span className="condition">Privacy Policy</span>
+            To learn more about how Superapp collects, uses, shares, and
+            protects your personal data please head to Superapp{" "}
+            <span className="condition">Privacy Policy</span>
           </p>
         </form>
       </div>
